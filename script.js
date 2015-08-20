@@ -140,8 +140,13 @@ $(document).ready(function() {
         if ($genter.length != 1 || $gexit.length != 1) {
             output("warning", "You did not define garage markers - is this a walk-in garage?");
         }
-        var genter = convertData($up);
-        var gexit = convertData($up);
+        if ($genter.prop("tagName") == "marker" || $gexit.prop("tagName") == "marker") {
+            output("warning", 'You defined garage doors using markers. While markers are still compatible, the new Liberty Interior Mapping Standard suggests you do them with peds. <a href="http://wiki.libertymta.net/Liberty_Interior_Mapping_Standard">Click here for more information.</a>');
+            $genter.attr('posZ', Number($genter.attr('posZ')) + 1);
+            $gexit.attr('posZ', Number($gexit.attr('posZ')) + 1);
+        }
+        var genter = convertData($genter);
+        var gexit = convertData($gexit);
         $genter.remove();
         $gexit.remove();
 
