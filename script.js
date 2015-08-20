@@ -49,7 +49,7 @@ $(document).ready(function() {
         try {
             xml = $.parseXML(map);
         } catch (err) {
-            output("danger", "Your map file is invalid: " + err);
+            output("danger", "Your map file is invalid.");
             return false;
         }
 
