@@ -181,7 +181,7 @@ $(document).ready(function() {
         var object = objects.join(",\n");
         $objects.remove();
 
-        var $all = $xml.find("*");
+        var $all = $xml.find("map > *");
         if ($all.length > 0) {
             var remaining = [];
             $all.each(function(i, o) {
