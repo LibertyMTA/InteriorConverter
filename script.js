@@ -192,7 +192,7 @@ $(document).ready(function() {
                 var item = $(o);
                 remaining.push(item.prop("tagName") + "(" + item.attr('id') + ")");
             });
-            output("warning", "You have items remaining on your map after all objects and key peds have been processed. Remember that vehicles, markers, removals and extra peds are not retained. Remaining items:" + remaining.join(", "));
+            output("warning", "You have items remaining on your map after all objects and key peds have been processed. Remember that vehicles, markers, removals and extra peds are not retained. Remaining items: " + remaining.join(", "));
         }
 
         // OK, we're all good to go - let's finish up!
@@ -207,6 +207,11 @@ $(document).ready(function() {
         });
 
         output("success", name + " (" + id + ") by " + mapper + " successfully converted. Please upload this file to the relevant Mantis issue.");
+
+        $warnings = $("#alerts > .alert-warning");
+        if ($warnings.length == 0) {
+            output("success", "Also, congratulations and thanks for making a clean map and not receiving any warnings at all!");
+        }
 
         $("#resultData").show();
     });
