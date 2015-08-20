@@ -20,7 +20,7 @@ interior.create = function(dimension)
     -- Spawn any objects here and add them onto objects
     for i,v in ipairs({
 %s
-    }) do -- DONE
+    }) do
         local obj = createObject(v[1], v[2], v[3], v[4], v[5], v[6], v[7])
         setElementDimension(obj, dimension)
         setElementInterior(obj, interior.interiorId)
@@ -35,7 +35,7 @@ interior.create = function(dimension)
     -- A teleporter for the garage
     local doorInGarage = Matrix(%s)
     local doorInApt = Matrix(%s)
-    local a, b = createTeleporters(doorInApt, dimension, interior.interiorId, doorInGarage, dimension, interior.interiorId, 52, 52, 249, 255) -- DONE
+    local a, b = createTeleporters(doorInApt, dimension, interior.interiorId, doorInGarage, dimension, interior.interiorId, 52, 52, 249, 255)
 
     table.insert(objects,a)
     table.insert(objects,b)
