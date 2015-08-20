@@ -1,0 +1,46 @@
+local interior = {}
+
+interior.name = "%s"
+interior.mapper = "%s"
+interior.interiorId = %d
+interior.enter = Matrix(%s)
+interior.spawn = Matrix(%s)
+interior.closet = Matrix(%s)
+interior.control = Matrix(%s)
+interior.gunChest = Matrix(%s)
+interior.col = {%s}
+interior.carspawns = {
+    -- Carspawns in this format:
+    -- Matrix(Vector3(x, y, z), Vector3(rotX, rotY, rotZ)),
+%s
+}
+
+interior.create = function(dimension)
+    local objects = {}
+    -- Spawn any objects here and add them onto objects
+    for i,v in ipairs({
+%s
+    }) do -- DONE
+        local obj = createObject(v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+        setElementDimension(obj, dimension)
+        setElementInterior(obj, interior.interiorId)
+        setElementDoubleSided(obj, true)
+        if v[8] ~= nil then
+            setElementAlpha(obj, v[8])
+        end
+
+        table.insert(objects, obj)
+    end
+
+    -- A teleporter for the garage
+    local doorInGarage = Matrix(%s)
+    local doorInApt = Matrix(%s)
+    local a, b = createTeleporters(doorInApt, dimension, interior.interiorId, doorInGarage, dimension, interior.interiorId, 52, 52, 249, 255) -- DONE
+
+    table.insert(objects,a)
+    table.insert(objects,b)
+
+    return objects
+end
+
+interiors[%d] = interior

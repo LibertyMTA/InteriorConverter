@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="sprintf.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 
@@ -15,19 +16,21 @@
     <hr>
     <!-- insert the explanation of the site here -->
     <div class="container">
-        <div id="content" class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div id="alerts"></div>
+        <div id="result"><div class="form-group"><textarea class="form-control" rows="30" id="resultData"></textarea></div><button class="btn btn-primary btn-block btn-lg">Return to Form</button></div>
+        <div id="content">
             <form id="converter">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name of the Interior">
+                    <input type="text" class="form-control" id="name" placeholder="Name of the Interior" value="Middle Class SF"></input>
                 </div>
                 <div class="form-group">
                     <label for="mapper">Mapper</label>
-                    <input type="text" class="form-control" id="mapper" placeholder="Name of the Mapper(s)">
+                    <input type="text" class="form-control" id="mapper" placeholder="Name of the Mapper(s)" value="Mossol"></input>
                 </div>
                 <div class="form-group">
                     <label for="id">ID</label>
-                    <input type="number" class="form-control" id="id" placeholder="ID of the Interior (Included in Mantis issue title, if not present ask Funstein)">
+                    <input type="number" class="form-control" id="id" placeholder="ID of the Interior (Included in Mantis issue title, if not present ask Funstein)" value="1"></input>
                 </div>
                 <div class="form-group">
                     <label for="map">Map file</label>
@@ -38,7 +41,13 @@
             </form>
         </div>
     </div>
-
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <div class="col-sm-12 text-center navbar-text">
+            The Liberty Interior Converter is an open source application provided to you by <a href="http://libertymta.net">LibertyMTA</a> and developed by <a href="http://mta.cemgokmen.com">Funstein</a> using jQuery and sprintf.js. <a href="license.html">LICENSE</a>.
+        </div>
+      </div>
+    </nav>
     <script src="script.js"></script>
 </body>
 </html>
