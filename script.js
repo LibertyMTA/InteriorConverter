@@ -141,7 +141,7 @@ $(document).ready(function() {
             output("warning", "You did not define garage markers - is this a walk-in garage?");
         }
         if ($genter.prop("tagName") == "marker" || $gexit.prop("tagName") == "marker") {
-            output("warning", 'You defined garage doors using markers. While markers are still compatible, the new Liberty Interior Mapping Standard suggests you do them with peds. <a href="http://wiki.libertymta.net/Liberty_Interior_Mapping_Standard">Click here for more information.</a>');
+            output("warning", 'You defined garage doors using markers. While markers are still compatible, <strong>the new Liberty Interior Mapping Standard suggests you do them with peds.</p> <a href="http://wiki.libertymta.net/Liberty_Interior_Mapping_Standard">Click here for more information.</a>');
             $genter.attr('posZ', Number($genter.attr('posZ')) + 1);
             $gexit.attr('posZ', Number($gexit.attr('posZ')) + 1);
         }
@@ -157,7 +157,7 @@ $(document).ready(function() {
         $objects.each(function(i, o) {
             var $item = $(o)
             if ($item.attr('doublesided') != "true") {
-                output("warning", "You have a non-doublesided object: " + $item.attr('id') + ". Keep in mind that LibertyHousing automatically makes all objects double-sided.");
+                output("warning", "You have a non-doublesided object: " + $item.attr('id') + ". <strong>LibertyHousing automatically makes all objects double-sided.</strong>");
             }
 
             var model = Number($item.attr('model'));
