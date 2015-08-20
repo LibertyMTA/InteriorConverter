@@ -183,7 +183,12 @@ $(document).ready(function() {
 
         var $all = $xml.find("*");
         if ($all.length > 0) {
-            output("warning", "You have items remaining on your map after all objects and key peds have been processed. Remember that vehicles, markers, removals and extra peds are not retained.");
+            var remaining = [];
+            $all.each(function(i, o) {
+                var item = $(o);
+                remaining.push(item.prop("tagName") + "(" + item.attr('id') + ")");
+            });
+            output("warning", "You have items remaining on your map after all objects and key peds have been processed. Remember that vehicles, markers, removals and extra peds are not retained. Remaining items:" + remaining.join(", "));
         }
 
         // OK, we're all good to go - let's finish up!
