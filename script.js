@@ -113,7 +113,11 @@ $(document).ready(function() {
         // Chest
         var $chest = $xml.find("object[id='chest']");
         if ($chest.length != 1) {
-            output("danger", "A chest was not found.");
+            output("danger", "An arms chest was not found.");
+            return false;
+        }
+        if (Number($chest.attr('model')) != 964) {
+            output("danger", "The arms chest must be model 964 - yours was " + $chest.attr('model') + " instead.");
             return false;
         }
         var chest = convertData($chest);
