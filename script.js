@@ -157,7 +157,7 @@ $(document).ready(function() {
         $objects.each(function(i, o) {
             var $item = $(o)
             if ($item.attr('doublesided') != "true") {
-                output("warning", "You have a non-doublesided object. Keep in mind that LibertyHousing automatically makes all objects double-sided.");
+                output("warning", "You have a non-doublesided object: " + $item.attr('id') + ". Keep in mind that LibertyHousing automatically makes all objects double-sided.");
             }
 
             var model = Number($item.attr('model'));
