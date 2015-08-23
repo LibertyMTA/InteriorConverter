@@ -219,7 +219,11 @@ $(document).ready(function() {
             async: false,
             dataType: "text",
             success: function (data){
-                $("#resultData").append(sprintf(data, name, mapper, interior, enter, spawn, closet, control, chest, col, carspawn, object, genter, gexit, removal, id));
+                var result = sprintf(data, name, mapper, interior, enter, spawn, closet, control, chest, col, carspawn, object, genter, gexit, removal, id));
+                if (removals.length == 0) {
+                    result = result.replace(/-- INIT FUNCTION.*-- END OF INIT/, ""); // Removes the init code if there arent removals
+                }
+                $("#resultData").val(result);
             }
         });
 

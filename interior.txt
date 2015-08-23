@@ -43,6 +43,7 @@ interior.create = function(dimension)
     return objects
 end
 
+-- INIT FUNCTION
 interior.initialize = function()
     -- This function is called when the resource is being started
     for i,v in ipairs({
@@ -51,5 +52,6 @@ interior.initialize = function()
         removeWorldModel(v[1], v[2], v[3], v[4], v[5], interior.interiorId)
     end
 end
+-- END OF INIT
 
 interiors[%d] = interior
