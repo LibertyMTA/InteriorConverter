@@ -155,7 +155,6 @@ $(document).ready(function() {
         $gexit.remove();
 
         // Get the objects now
-        // Carspawns
         var objects = []
         var $objects = $xml.find("object");
         $objects.each(function(i, o) {
@@ -185,6 +184,24 @@ $(document).ready(function() {
         var object = objects.join(",\n");
         $objects.remove();
 
+        var removals = []
+        var $removals = $xml.find("removeWorldObject");
+        $removals.each(function(i, o) {
+            var $item = $(o)
+
+            var model = Number($item.attr('model'));
+            var radius = $item.attr('radius') + "";
+            var posX = Number($item.attr('posX'));
+            var posY = Number($item.attr('posY'));
+            var posZ = Number($item.attr('posZ'));
+
+            var str = sprintf("%d, %s, %.2f, %.2f, %.2f", model, radius, posX, posY, posZ);
+
+            removals.push("    {" + str + "}");
+        });
+        var removal = removals.join(",\n");
+        $removals.remove();
+
         var $all = $xml.find("map > *");
         if ($all.length > 0) {
             var remaining = [];
@@ -202,7 +219,7 @@ $(document).ready(function() {
             async: false,
             dataType: "text",
             success: function (data){
-                $("#resultData").append(sprintf(data, name, mapper, interior, enter, spawn, closet, control, chest, col, carspawn, "", genter, gexit, id));
+                $("#resultData").append(sprintf(data, name, mapper, interior, enter, spawn, closet, control, chest, col, carspawn, object, genter, gexit, removal, id));
             }
         });
 
